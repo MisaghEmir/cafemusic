@@ -12,7 +12,7 @@ const MusicPlayer = () => {
   const [open, setOpen] = useState(false);
   const [PlayerFill, setPlayerFill] = useState(0);
   const [MusicTime, setMusicTime] = useState("0:00");
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const dispatch = useDispatch();
 
   const music = useSelector(
@@ -35,14 +35,16 @@ const MusicPlayer = () => {
   }, [music]);
 
   const handlePlay = () => {
-    const myAudio = document.getElementById("myAdio");
-    if (myAudio.paused) {
+    const myAudio = document.getElementById(
+      "myAdio",
+    ) as HTMLAudioElement | null;
+    if (myAudio && myAudio.paused) {
       myAudio.play();
       setPlay(true);
       //   dispatch({
       //     type: "play",
       //   });
-    } else {
+    } else if(myAudio && myAudio.played) {
       myAudio.pause();
       setPlay(false);
       //   dispatch({
@@ -67,23 +69,21 @@ const MusicPlayer = () => {
       //     });
       //   }
       console.log({ f });
-      setPlayerFill(parseInt(f));
+      setPlayerFill(f);
       setMusicTime(Time);
-        if (Audio.currentTime === Audio.duration)
-        nextHandle();
-          } 
-    
+      if (Audio.currentTime === Audio.duration) nextHandle();
+    }
   };
 
   const change_time = (time: any) => {
-    var min = parseInt(time / 60);
-    var second = parseInt(time - min * 60);
+    var min = Math.floor(time / 60);
+    var second = Math.floor(time - min * 60);
 
     if (second > 9) return min.toString() + ":" + second.toString();
     else return min.toString() + ":0" + second.toString();
   };
 
-  const FillHandle = (e: any) => {
+  const FillHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value); // تبدیل به عدد اعشاری
     if (isNaN(value)) return;
 
@@ -188,7 +188,10 @@ const MusicPlayer = () => {
             <div className="w-[10px] h-[10px] rounded-full bg-white absolute top-[-3px] left-[20%]"></div>
           </div>
           <div className="col-span-2 justify-end flex">
-            <LiaListAlt onClick={() => setOpen(!open)}  className=" cursor-pointer"/>
+            <LiaListAlt
+              onClick={() => setOpen(!open)}
+              className=" cursor-pointer"
+            />
           </div>
         </div>
       </div>
