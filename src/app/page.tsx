@@ -72,7 +72,7 @@ export default function Home() {
       <Address />
       <h1 className="mt-20 text-4xl font-bold">Releases</h1>
       <div className="my-10">
-        <Homefilter />
+        {/* <Homefilter /> */}
       </div>
       <div className="grid grid-cols-5 gap-8 px-3">
         {Music.map((item, index) => (

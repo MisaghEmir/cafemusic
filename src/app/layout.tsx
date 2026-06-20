@@ -52,7 +52,7 @@ export default function RootLayout({
             </div>
           </div>
           <div className=" fixed bottom-0 w-full md:hidden">
-            <MusicPlayerSmall />
+            {/* <MusicPlayerSmall /> */}
           </div>
         </ReduxProvider>
       </body>
