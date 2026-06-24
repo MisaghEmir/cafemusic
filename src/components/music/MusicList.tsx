@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { Minus, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +13,11 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { Music } from "@/config/data";
+import MusicRow from "./MusicRow";
+import { useDispatch } from "react-redux";
+import MusicListRow from "./MusicListRow";
+import { StarsIcon } from "lucide-react";
 
 const data = [
   {
@@ -59,9 +63,11 @@ const data = [
 
 export function DrawerDemo({
   open,
+  music,
   setOpen,
 }: {
   open: boolean;
+  music: Music | null;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [goal, setGoal] = React.useState(350);
@@ -69,52 +75,68 @@ export function DrawerDemo({
   function onClick(adjustment: number) {
     setGoal(Math.max(200, Math.min(400, goal + adjustment)));
   }
-
+  const dispatch = useDispatch();
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerContent className="bg-[#191919]">
-        <div className="mx-auto w-full max-w-sm">
-          <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+        <div className="mx-auto w-full px-40 ">
+          <DrawerHeader className="flex justify-between flex-row">
+            <div>
+              <StarsIcon />
+            </div>
+            <div>
+              <DrawerTitle className="text-white">{music?.name}</DrawerTitle>
+              <DrawerDescription>
+                Set your daily activity goal.
+              </DrawerDescription>
+            </div>
+            <div>
+              <StarsIcon />
+            </div>
           </DrawerHeader>
-          <div className="p-4 pb-0">
-            <div className="flex items-center justify-center space-x-2">
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(-10)}
-                disabled={goal <= 200}
-              >
-                <Minus />
-                <span className="sr-only">Decrease</span>
-              </Button>
-              <div className="flex-1 text-center">
-                <div className="text-7xl font-bold tracking-tighter">
-                  {goal}
+          <div className="p-4 pb-0 w-full ">
+            <div className="mt-0">
+              <div className="grid grid-cols-12 text-amber-50 justify-between w-full">
+                <div>
+                  <b>Image</b>
                 </div>
-                <div className="text-[0.70rem] text-muted-foreground uppercase">
-                  Calories/day
+                <div className=" col-span-6">
+                  <b>name</b>
+                </div>
+                <div className="col-span-2">
+                  <b>album</b>
+                </div>
+                <div className=" col-span-2">
+                  <b>Duration</b>
+                </div>
+                <div>
+                  <b>Edit</b>
                 </div>
               </div>
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(10)}
-                disabled={goal >= 400}
-              >
-                <Plus />
-                <span className="sr-only">Increase</span>
-              </Button>
+              <div className="mt-5 flex flex-col gap-5 h-52 overflow-y-scroll none-scroll">
+                {Music.map((item, index) => (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      dispatch({
+                        type: "add",
+                        value: item,
+                      });
+                      dispatch({
+                        type: "listadd",
+                        value: Music,
+                      });
+                    }}
+                  >
+                    <MusicListRow music={item} />
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="mt-3 h-[120px]"></div>
           </div>
           <DrawerFooter>
-            <Button>Submit</Button>
             <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline">Done</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>

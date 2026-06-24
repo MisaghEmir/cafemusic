@@ -10,7 +10,7 @@ function page() {
       <div className="flex relative   justify-between items-center mt-10">
         <div className="top-0 left-0 absolute w-full h-full blur-3xl z-0 from-amber-800 to-white bg-linear-to-r backdrop:blur-2xl"></div>
         <div className="z-10">
-          <img src="/file.svg" className="w-20" alt="" />
+          <img src="/image/1jijc25a.jpeg" className="w-44 rounded-xl" alt="" />
         </div>
       </div>
       <div className="mt-20">

@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/layouts/Header";
 import Sidebar from "@/components/layouts/Sidebar";
 import ReduxProvider from "@/components/ReduxProvider";
-import { TooltipProvider } from "@/components/ui/tooltip"
+import { TooltipProvider } from "@/components/ui/tooltip";
 import MusicPlayer from "@/components/music/MusicPlayer";
 import MusicPlayerSmall from "@/components/music/MusicPlayerSmall";
 
@@ -46,8 +46,7 @@ export default function RootLayout({
                 <Header />
               </div>
               <div className="pb-20 px-5">
-
-           <TooltipProvider>{nav}</TooltipProvider>
+                <TooltipProvider>{nav}</TooltipProvider>
               </div>
             </div>
           </div>

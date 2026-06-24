@@ -1,5 +1,6 @@
 import React, { SetStateAction } from "react";
 import { BiBox } from "react-icons/bi";
+import { ComboboxMusic } from "./Combobox";
 
 const Homefilter = ({category,categoryHandle}:{
   category: string,categoryHandle: React.Dispatch<SetStateAction<string>>
@@ -7,13 +8,7 @@ const Homefilter = ({category,categoryHandle}:{
   return (
     <div className="flex justify-between items-center pr-8">
       <div className="flex items-center gap-10">
-        <div className=" border border-white/20 rounded-lg flex items-center gap-20 py-2 px-3">
-          <p className="text-sm font-bold">Remmended</p>
-          <i>
-            <BiBox />
-          </i>
-        </div>
-        <p className="font-bold text-white/80 text-sm md:block hidden">Cuntry</p>
+       <ComboboxMusic />
         <p className="font-bold text-white/80 text-sm md:block hidden">Type</p>
       </div>
       <div className="border border-white/30 rounded-3xl text-sm font-bold md:flex hidden overflow-hidden items-center">

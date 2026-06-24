@@ -208,7 +208,7 @@ const MusicPlayer = () => {
           <source src="" type="" />
         </audio>
       </div>
-      <DrawerDemo open={open} setOpen={setOpen} />
+      <DrawerDemo open={open} setOpen={setOpen} music={music} />
     </div>
   );
 };

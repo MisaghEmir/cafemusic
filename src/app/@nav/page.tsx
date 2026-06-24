@@ -1,7 +1,9 @@
 import Address from "@/components/layouts/Address";
+import { CarouselHome } from "@/components/layouts/Slider";
 import Homefilter from "@/components/music/Homefilter";
 import MusicCard from "@/components/music/MusicCard";
-import { Music } from "@/config/data";
+import PlaylistCard from "@/components/playlist/PlaylistCard";
+import { Music, PlaylistData } from "@/config/data";
 
 const fristMusic = {
   _id: "1",
@@ -69,7 +71,23 @@ const sixMusic = {
 export default function Home() {
   return (
     <div className="pt-5">
-    HOME
+      <div className="w-full flex justify-center px-2">
+        <CarouselHome />
+      </div>
+      <div className="grid md:grid-cols-5 grid-cols-3 gap-8 px-3 mt-32">
+        {Music.map((item, index) => (
+          <div key={index}>
+            <MusicCard music={item} />
+          </div>
+        ))}
+      </div>
+       <div className="grid grid-cols-4 mt-16 gap-8 px-3">
+        {PlaylistData.map((item, index) => (
+          <div key={index}>
+            <PlaylistCard playlist={item} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
