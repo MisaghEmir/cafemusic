@@ -204,8 +204,7 @@ const MusicPlayer = () => {
           ref={audioRef}
           //   onCanPlay={() => libraryHandle()}
         >
-          <source src="" type="" />
-          <source src="" type="" />
+          <source src={music?.audio} type="" />
         </audio>
       </div>
       <DrawerDemo open={open} setOpen={setOpen} music={music} />

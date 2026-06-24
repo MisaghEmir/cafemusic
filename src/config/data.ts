@@ -5,7 +5,7 @@ export const Music = [
     singer: "Adele",
     album: "string",
     image:
-      "/image/1l036ppd.jpeg",
+      "/image/1jijc25a.jpeg",
     audio:
       "/music/Adele-Someone-Like-You.mp3",
     view: 54,
@@ -16,7 +16,7 @@ export const Music = [
     singer: "Adele",
     album: "string",
     image:
-      "/image/1l11k2ii.jpeg",
+      "/image/adele-easy-on-me-3.avif",
     audio:
       "/music/Adele-Set-Fire-to-the-Rain.mp3",
     view: 54,
@@ -27,20 +27,20 @@ export const Music = [
     singer: "Adele",
     album: "string",
     image:
-      "/image/1l24t5lv.jpeg",
+      "/image/images(6).jpg",
     audio:
       "/music/Adele-Rolling-in-the-Deep.mp3",
     view: 54,
   },
   {
     _id: "4",
-    name: "Million Years Ago",
+    name: "Hello",
     singer: "Adele",
     album: "string",
     image:
-      "/image/1jijc25a.jpeg",
+      "/image/hello-adele.jpg",
     audio:
-      "/music/Adele-Rolling-in-the-Deep.mp3",
+      "/music/music-adele-hello-wikizaban.com.mp3",
     view: 54,
   },
   {
@@ -49,7 +49,7 @@ export const Music = [
     singer: "Adele",
     album: "string",
     image:
-      "/image/Adele-Laurie-Blue-Adkins.png",
+      "/image/adele.jpg",
     audio:
       "/music/Adele-Someone-Like-You.mp3",
     view: 54,

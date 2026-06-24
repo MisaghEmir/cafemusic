@@ -87,7 +87,7 @@ export function DrawerDemo({
             <div>
               <DrawerTitle className="text-white">{music?.name}</DrawerTitle>
               <DrawerDescription>
-                Set your daily activity goal.
+                {music?.singer}
               </DrawerDescription>
             </div>
             <div>
