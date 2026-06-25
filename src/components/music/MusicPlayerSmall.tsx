@@ -213,7 +213,7 @@ const MusicPlayerSmall = () => {
           <source src="" type="" />
         </audio>
       </div>
-      <DrawerDemo open={open} setOpen={setOpen} />
+      {/* <DrawerDemo open={open} setOpen={setOpen} /> */}
     </div>
   );
 };
