@@ -30,12 +30,14 @@ const Sidebar = () => {
               Library
             </button>
           </Link>
+           <Link href={"/music"}>
           <button className="w-full text-left p-2 px-4 rounded-md hover:bg-zinc-800 cursor-pointer flex items-center gap-2 transition-all delay-75">
             <i>
               <BiMusic />
             </i>
             Musics
           </button>
+           </Link>
           <button className="w-full text-left p-2 px-4 rounded-md hover:bg-zinc-800 cursor-pointer flex items-center gap-2 transition-all delay-75">
             <i>
               <CgPlayList />
