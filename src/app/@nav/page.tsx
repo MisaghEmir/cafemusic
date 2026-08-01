@@ -71,20 +71,13 @@ const sixMusic = {
 export default function Home() {
   return (
     <div className="pt-5">
-      <div className="w-full flex justify-center px-2">
+      <div>
+        <h1 className="mt-16 text-4xl font-bold">Remmended</h1>
+      </div>
+      <div className="w-full flex justify-center px-0 mt-10">
         <CarouselHome />
       </div>
-      <div>
-         <h1 className="mt-16 text-4xl font-bold">Remmended</h1>
-      </div>
-      <div className="grid md:grid-cols-5 grid-cols-3 gap-8 px-3 mt-10">
-        {Music.map((item, index) => (
-          <div key={index}>
-            <MusicCard music={item} />
-          </div>
-        ))}
-      </div>
-       <div className="grid grid-cols-4 mt-16 gap-8 px-3">
+      <div className="grid grid-cols-4 mt-16 gap-8 px-3">
         {PlaylistData.map((item, index) => (
           <div key={index}>
             <PlaylistCard playlist={item} />

@@ -72,7 +72,7 @@ export const PlaylistData = [
     _id: "1",
     name: "Someone Like You",
     image:
-      "https://drive.google.com/uc?export=view&id=1KfHT8-KrzU42a18vsi-taaq8I73Qejss",
+      "/image/31JSk-BC-3L._AC_UF894,1000_QL80_.jpg",
      
     musics: ["sada"],
   },
@@ -80,37 +80,35 @@ export const PlaylistData = [
     _id: "2",
     name: "Set Fire to the rain",
     image:
-      "/images/1l036ppd.jpeg",
+      "/image/800w-A1Elrsdqe74.webp",
     musics: ["sada"],
   },
   {
     _id: "3",
     name: "Rolling in the Deep",
-    image:
-      "https://kurdsong.storage.iran.liara.space/cafemusic/images/1l11k2ii.jpeg",
+   image:
+      "/image/31JSk-BC-3L._AC_UF894,1000_QL80_.jpg",
     musics: ["sada"],
   },
   {
     _id: "4",
     name: "Million Years Ago",
     image:
-      "https://kurdsong.storage.iran.liara.space/cafemusic/images/1l24t5lv.jpeg",
-
+      "/image/800w-A1Elrsdqe74.webp",
     musics: ["sada"],
   },
   {
     _id: "5",
     name: "Million Years Ago",
     image:
-      "https://kurdsong.storage.iran.liara.space/cafemusic/images/Adele-Laurie-Blue-Adkins.png",
-
+      "/image/31JSk-BC-3L._AC_UF894,1000_QL80_.jpg",
     musics: ["sada"],
   },
   {
     _id: "6",
     name: "Million Years Ago",
-    image:
-      "https://kurdsong.storage.iran.liara.space/cafemusic/images/Adele-music.png",
+     image:
+      "/image/800w-A1Elrsdqe74.webp",
     musics: ["sada"],
   },
 ];
