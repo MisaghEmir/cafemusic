@@ -1,117 +1,134 @@
+
 "use client";
+
 import { useDispatch } from "react-redux";
 import { Music } from "@/config/data";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
 import {
   ContextMenu,
-  ContextMenuCheckboxItem,
   ContextMenuContent,
-  ContextMenuGroup,
   ContextMenuItem,
   ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
   ContextMenuSeparator,
-  ContextMenuShortcut,
-  ContextMenuSub,
-  ContextMenuSubContent,
-  ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 
 const MusicCard = ({ music }: { music: Music }) => {
   const dispatch = useDispatch();
+
+  const playMusic = () => {
+    dispatch({
+      type: "add",
+      value: music,
+    });
+
+    dispatch({
+      type: "listadd",
+      value: Music,
+    });
+  };
+
+  const copyText = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (error) {
+      console.error("Copy failed:", error);
+    }
+  };
+
   return (
     <ContextMenu>
-      <ContextMenuTrigger className="">
+      <ContextMenuTrigger>
         <Tooltip>
           <TooltipTrigger asChild>
             <div
-              onClick={() => {
-                dispatch({
-                  type: "add",
-                  value: music,
-                });
-                dispatch({
-                  type: "listadd",
-                  value: Music,
-                });
-              }}
-              className=" cursor-pointer hover:scale-105 transition-all delay-75"
+              onClick={playMusic}
+              className="cursor-pointer hover:scale-105 transition-all delay-75"
             >
-              <div className=" rounded-xl image-shadow overflow-hidden relative">
+              <div className="rounded-xl image-shadow overflow-hidden relative">
                 <img
                   src={music.image}
-                  className="w-full aspect-4/4 object-cover"
-                  alt="Image"
+                  className="w-full aspect-square object-cover"
+                  alt={music.name}
                 />
-                <div className=" absolute top-0 left-0 w-full h-full bg-black/10"></div>
+
+                <div className="absolute top-0 left-0 w-full h-full bg-black/10" />
               </div>
+
               <div className="p-1 pt-2">
-                <h3 className="font-bold text-[15px]">{music.name}</h3>
-                <p className="text-sm text-white/70">{music.singer}</p>
+                <h3 className="font-bold text-[15px]">
+                  {music.name}
+                </h3>
+
+                <p className="text-sm text-white/70">
+                  {music.singer}
+                </p>
               </div>
             </div>
           </TooltipTrigger>
+
           <TooltipContent>
-            <small>Right-click an item to edit its properties.</small>
+            <small>Right-click for music options.</small>
           </TooltipContent>
         </Tooltip>
       </ContextMenuTrigger>
-      <ContextMenuContent className="w-48">
-        <ContextMenuGroup>
-          <ContextMenuItem>
-            Back
-            <ContextMenuShortcut>⌘[</ContextMenuShortcut>
-          </ContextMenuItem>
-          <ContextMenuItem disabled>
-            Forward
-            <ContextMenuShortcut>⌘]</ContextMenuShortcut>
-          </ContextMenuItem>
-          <ContextMenuItem>
-            Reload
-            <ContextMenuShortcut>⌘R</ContextMenuShortcut>
-          </ContextMenuItem>
-          <ContextMenuSub>
-            <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
-            <ContextMenuSubContent className="w-44">
-              <ContextMenuGroup>
-                <ContextMenuItem>Save Page...</ContextMenuItem>
-                <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-                <ContextMenuItem>Name Window...</ContextMenuItem>
-              </ContextMenuGroup>
-              <ContextMenuSeparator />
-              <ContextMenuGroup>
-                <ContextMenuItem>Developer Tools</ContextMenuItem>
-              </ContextMenuGroup>
-              <ContextMenuSeparator />
-              <ContextMenuGroup>
-                <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
-              </ContextMenuGroup>
-            </ContextMenuSubContent>
-          </ContextMenuSub>
-        </ContextMenuGroup>
-        <ContextMenuSeparator />
-        <ContextMenuGroup>
-          <ContextMenuCheckboxItem checked>
-            Show Bookmarks
-          </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-        </ContextMenuGroup>
-        <ContextMenuSeparator />
-        <ContextMenuGroup>
-          <ContextMenuRadioGroup value="pedro">
-            <ContextMenuLabel>People</ContextMenuLabel>
-            <ContextMenuRadioItem value="pedro">
-              Pedro Duarte
-            </ContextMenuRadioItem>
-            <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
-          </ContextMenuRadioGroup>
-        </ContextMenuGroup>
+
+      <ContextMenuContent className="w-56 bg-[#191919] border-white/10 text-white">
+        <ContextMenuLabel className="text-white/50 text-xs truncate">
+          {music.name}
+        </ContextMenuLabel>
+
+        <ContextMenuSeparator className="bg-white/10" />
+
+        <ContextMenuItem
+          onSelect={playMusic}
+          className="cursor-pointer focus:bg-[#E60A54] focus:text-white"
+        >
+          <span className="mr-2">▶</span>
+          Play Now
+        </ContextMenuItem>
+
+        <ContextMenuItem
+          onSelect={() => {
+            dispatch({
+              type: "listadd",
+              value: Music,
+            });
+          }}
+          className="cursor-pointer focus:bg-[#E60A54] focus:text-white"
+        >
+          <span className="mr-2">♫</span>
+          Add to Queue
+        </ContextMenuItem>
+
+        <ContextMenuSeparator className="bg-white/10" />
+
+        <ContextMenuItem
+          onSelect={() => copyText(music.name)}
+          className="cursor-pointer focus:bg-[#E60A54] focus:text-white"
+        >
+          Copy Song Name
+        </ContextMenuItem>
+
+        <ContextMenuItem
+          onSelect={() => copyText(music.singer)}
+          className="cursor-pointer focus:bg-[#E60A54] focus:text-white"
+        >
+          Copy Artist Name
+        </ContextMenuItem>
+
+        <ContextMenuItem
+          onSelect={() => copyText(music.audio)}
+          className="cursor-pointer focus:bg-[#E60A54] focus:text-white"
+        >
+          Copy Audio Link
+        </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   );
