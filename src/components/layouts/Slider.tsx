@@ -18,16 +18,17 @@ interface CarouselHomeProps {
 
 export function CarouselHome({ music }: CarouselHomeProps) {
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full min-w-0 overflow-hidden">
       <div
         dir="ltr"
-        className="flex gap-7 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-proximity pb-4 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex w-full gap-7 overflow-x-auto overscroll-x-contain scroll-smooth snap-x snap-mandatory pb-4 px-1"
+        style={{ scrollbarWidth: "none" }}
       >
         {music.map((item) => (
           <div
             key={item._id}
             dir="rtl"
-            className="shrink-0 snap-start w-[calc((100%-112px)/4.5)]"
+            className="w-[220px] shrink-0 snap-start"
           >
             <MusicCard music={item} />
           </div>
