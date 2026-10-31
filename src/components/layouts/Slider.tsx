@@ -21,26 +21,13 @@ export function CarouselHome({ music }: CarouselHomeProps) {
     <div className="w-full overflow-hidden">
       <div
         dir="ltr"
-        className="
-          flex gap-7
-          overflow-x-auto
-          overflow-y-hidden
-          scroll-smooth
-          snap-x snap-proximity
-          pb-4 px-1
-          [scrollbar-width:none]
-          [&::-webkit-scrollbar]:hidden
-        "
+        className="flex gap-7 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-proximity pb-4 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {music.map((item) => (
           <div
             key={item._id}
             dir="rtl"
-            className="
-              shrink-0
-              snap-start
-              w-[calc((100%-112px)/4.5)]
-            "
+            className="shrink-0 snap-start w-[calc((100%-112px)/4.5)]"
           >
             <MusicCard music={item} />
           </div>
