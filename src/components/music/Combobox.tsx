@@ -1,5 +1,4 @@
-
-"use client";
+"use client"
 
 import {
   Combobox,
@@ -8,55 +7,30 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/components/ui/combobox";
+} from "@/components/ui/combobox"
 
-interface SortOption {
-  label: string;
-  value: string;
-}
+const frameworks = [
+  "Next.js",
+  "SvelteKit",
+  "Nuxt.js",
+  "Remix",
+  "Astro",
+] as const
 
-interface ComboboxMusicProps {
-  value: string;
-  onValueChange: (value: string) => void;
-}
-
-const sortOptions: SortOption[] = [
-  { label: "Default", value: "default" },
-  { label: "Name (A-Z)", value: "az" },
-  { label: "Name (Z-A)", value: "za" },
-  { label: "Most Viewed", value: "most-viewed" },
-  { label: "Least Viewed", value: "least-viewed" },
-];
-
-export function ComboboxMusic({
-  value,
-  onValueChange,
-}: ComboboxMusicProps) {
+export function ComboboxMusic() {
   return (
-    <Combobox
-      items={sortOptions}
-      value={sortOptions.find((item) => item.value === value) ?? sortOptions[0]}
-      onValueChange={(selected) => {
-        if (selected && typeof selected === "object" && "value" in selected) {
-          onValueChange(String(selected.value));
-        }
-      }}
-      itemToStringLabel={(item) => item.label}
-      
-    >
-      <ComboboxInput placeholder="Sort by..."  className="h-full"/>
-
+    <Combobox items={frameworks}>
+      <ComboboxInput placeholder="Select a framework" />
       <ComboboxContent>
-        <ComboboxEmpty>No options found.</ComboboxEmpty>
-
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
           {(item) => (
-            <ComboboxItem key={item.value} value={item}>
-              {item.label}
+            <ComboboxItem key={item} value={item}>
+              {item}
             </ComboboxItem>
           )}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  );
+  )
 }

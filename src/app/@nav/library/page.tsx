@@ -1,4 +1,3 @@
-"use client";
 
 import Address from "@/components/layouts/Address";
 import PlaylistCard from "@/components/playlist/PlaylistCard";
