@@ -52,7 +52,7 @@ export const Music = [
     name: "Blinding Lights",
     singer: "The Weeknd",
     album: "After Hours",
-    image: "/image/Adele-music.png",
+    image: "/image/Blinding_Lights.png",
     audio: "/music/The-Weeknd-Blinding-Lights.mp3",
     view: 15000,
   },
